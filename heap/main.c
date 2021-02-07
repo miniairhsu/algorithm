@@ -11,7 +11,7 @@ void insert(int H[], int n)
     H[i] = temp;
 }
 
-//n is heap size
+//n is heap size, always delete root first
 int delete(int A[], int n)
 {
     int i, j, x, val;

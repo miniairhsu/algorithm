@@ -128,18 +128,82 @@ void merge_iterative(int A[], int n)
             
         }
     }
+    //number of list is odd number
     if(p / 2 < n)
         merge(A, 0, (p/2)-1, n);
 }
 
+void merge_recur(int A[], int l, int h)
+{
+    int mid;
+    if(l < h) {
+        mid = (l + h) / 2;
+        merge_recur(A, l, mid);
+        merge_recur(A, mid+ 1, h);
+        merge(A, l, mid, h);
+    }
+}
+
+int findMax(int A[], int n)
+{
+    int max = -65536;
+    for(int i = 0; i < n; i++) {
+        if(A[i] > max) 
+            max = A[i];
+    }
+    return max;
+}
+void count_sort(int A[], int n)
+{
+    int i, j, max, *c;
+    max = findMax(A, n);
+    c = (int *)malloc(sizeof(int) * (max + 1));
+    for( i = 0; i < max + 1; i++) {
+        c[i] = 0;
+    }
+
+    for(i = 0; i < n; i++) {
+        c[A[i]]++;
+    }
+    i = 0;
+    j = 0;
+    while(j < max+1) {
+        if(c[j] > 0) {
+            A[i++] = j;
+            c[j]--;
+        } else {
+            j++;
+        }
+    }
+}
+
+void shell_sort(int A[], int n)
+{
+    int gap, i, j, temp;
+    for(gap = n /2; gap >= 1; gap /= 2) {
+        for(i = gap; i < n; i++) {
+            temp = A[i];
+            j =  i - gap;
+            while( j >= 0 && A[j] > temp) {
+                A[j + gap] = A[j];
+                j = j - gap;
+            }
+            A[j+gap] = temp;
+        }
+    }
+}
+
 int main()
 {
-    int A[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2, 13}; //0 is ignore
+    int A[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2}; //0 is ignore
     //int A[] = {2, 4 , 5, 3};
     int n =10;
-    merge_iterative(A, 11);
+    //merge_iterative(A, 11);
     //quicksort(A, 0, 10);
-    for(int i = 0; i < 11; i++)
+    //merge_recur(A, 0, 9);
+    //count_sort(A, 10);
+    shell_sort(A, 10);
+    for(int i = 0; i < 10; i++)
     {
         printf("%d ", A[i]);
     }

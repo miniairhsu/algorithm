@@ -258,7 +258,7 @@ void reverse_array(struct Node* p)
     struct Node* q = p;
     a = (int *)malloc(sizeof(int) * count(p));
     while(q != NULL) {
-        a[i] = q->data;
+         [i] = q->data;
         q = q->next;
         i++;
     }
@@ -342,7 +342,7 @@ int isLoop(struct Node* f)
     do {
         p = p->next;
         q = q->next;
-        q = q ? q->next : q;
+        q = (q != NULL) ? q->next : NULL;
     }while(p && q && p != q);
     if(p == q) return 1;
     else return 0;

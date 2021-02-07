@@ -13,7 +13,7 @@ int fun(int n)
 int main()
 {
     int r;
-    r = fun(5);
+    r = fun(3);
     printf("%d\r\n",r);
     return 0;
 }

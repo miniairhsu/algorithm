@@ -14,7 +14,7 @@ int node_height(struct Node* p)
 
 int balance_factor(struct Node* p)
 {
-     int hl, hr;
+    int hl, hr;
     hl = p && p->lchild ? p->lchild->height : 0;
     hr = p && p->rchild ? p->rchild->height : 0;
     return hl - hr;

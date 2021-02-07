@@ -165,7 +165,7 @@ void Reverse(struct Array *arr)
     int *B;
     int i, j;
     B = (int *)malloc(arr->length * sizeof(int));
-    for(i = arr->length-1, j = 0; i>=0; i--, j++) {
+    for(i = arr->length-1, j = 0; i >=0; i--, j++) {
         B[j] = arr->A[i];
     }
 
@@ -294,12 +294,13 @@ struct Array* Difference(struct Array *arr1, struct Array *arr2)
             arr3->A[k++] = arr1->A[i++];
         else if(arr2->A[j] < arr1->A[i])
             j++;
+            //arr3->A[k++] = arr1->A[j++];
         else {
             i++;
             j++;
         }
     }
-    for(;i<arr1->length;i++)
+    for(;j<arr1->length;i++)
         arr3->A[k++] = arr1->A[i];
     arr3->length = k;
     arr3->size = 10;
@@ -309,7 +310,7 @@ struct Array* Difference(struct Array *arr1, struct Array *arr2)
 int main()
 {
 
-    //struct Array arr2 = {{2,3,4,5,6,-7}, 10, 6};
+    //struct Array arr2 = {{2,3,4,5,6}, 10, 5};
     //Append(&arr2, 10);
     //Display(arr2);
     //Insert(&arr2, 5, 10);
@@ -319,6 +320,7 @@ int main()
     //printf("%d\r\n", RBinarySearch(arr2.A, 0, arr2.length-1 , 5));
     //printf("%d\r\n", Get(arr2, 2));
     //Set(&arr2, 0, 15);
+    //Reverse(&arr2);
     //Display(arr2);
     //printf("%d\r\n", Sum(arr2));
     //Reverse_Swap(&arr2);
@@ -331,7 +333,7 @@ int main()
     //struct Array *arr3;
     //arr3 = Difference(&arr, &arr1);
     //Display(*arr3);
-    struct Array arr1;
+    /*struct Array arr1;
     int ch;
     int x, index;
     printf("Enter size of array");
@@ -368,7 +370,7 @@ int main()
                 break;
             case 5:Display(arr1);
         }
-    } while(ch<6);
+    } while(ch<6);*/
     
     return 0;
 }

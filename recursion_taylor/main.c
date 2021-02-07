@@ -14,6 +14,6 @@ double e(int x, int n)
 
 int main()
 {
-    printf("%f\r\n", e(1,10));
+    printf("%f\r\n", e(2,3));
     return 0;
 }

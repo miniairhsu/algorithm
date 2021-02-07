@@ -25,6 +25,6 @@ int NCR(int n, int r)
 
 int main()
 {
-    printf("%d\r\n", NCR(5,1));
+    printf("%d\r\n", NCR(5,2));
     return 0;
 }
