@@ -1,0 +1,6 @@
+/home/algorithm/minesweeper_8/build/CMakeFiles/rebuild_cache.dir
+/home/algorithm/minesweeper_8/build/CMakeFiles/edit_cache.dir
+/home/algorithm/minesweeper_8/build/CMakeFiles/mine_layout.dir
+/home/algorithm/minesweeper_8/build/sln/CMakeFiles/rebuild_cache.dir
+/home/algorithm/minesweeper_8/build/sln/CMakeFiles/edit_cache.dir
+/home/algorithm/minesweeper_8/build/sln/CMakeFiles/mine_layout_solution.dir

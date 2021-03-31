@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../inc/minesweeper.h
+stdint.h
+-
+stdbool.h
+-
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+
+/home/algorithm/minesweeper_8/sln/solution.c
+minesweeper.h
+-
+

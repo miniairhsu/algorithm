@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmine_layout_solution.a  CMakeFiles/mine_layout_solution.dir/solution.c.o
+/usr/bin/ranlib libmine_layout_solution.a

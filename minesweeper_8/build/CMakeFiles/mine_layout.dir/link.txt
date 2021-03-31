@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/mine_layout.dir/src/main.cpp.o  -o mine_layout  sln/libmine_layout_solution.a 
