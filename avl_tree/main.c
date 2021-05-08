@@ -51,12 +51,31 @@ struct Node* lrrotation(struct Node* p)
 
 struct Node* rrrotation(struct Node* p)
 {
-    return p;
+    struct Node* pr = p->rchild;
+    struct Node* prl = pr->lchild;
+    pr->lchild = p;
+    p->rchild = prl;
+    p->height = node_height(p);
+    pr->height = node_height(pr);
+    if(root == p)
+        root = pr;
+    return pr;
 }
 
 struct Node* rlrotation(struct Node* p)
 {
-    return p;
+    struct Node* pr = p->rchild;
+    struct Node* prl = pr->lchild;
+    pr->lchild = prl->rchild;
+    p->rchild = prl->lchild;
+    prl->rchild = pr;
+    prl->lchild = p;
+    pr->height = node_height(pr);
+    p->height = node_height(p);
+    prl->height = node_height(prl); 
+    if(root == p)
+        root = prl;
+    return prl;
 }
 struct Node * insert_rec(struct Node* p, int key)
 {

@@ -112,7 +112,7 @@ int main()
     //find min cost edge
     for(i = 1; i <= n ;i++) {
         for(j = i; j <= n; j++) {
-            if(cost[i][j] < min) {
+            if(cost[i][j] < min) { //only check top half
                 min = cost[i][j];
                 u = i;
                 v = j;

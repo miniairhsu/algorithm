@@ -41,13 +41,20 @@ void insertion(int A[], int n)
 void selection(int A[], int n)
 {
     int i, j, k;
-    for(i = 0; i < n -1; i++) {
+    /*for(i = 0; i < n -1; i++) {
         for(j=k=i; j < n; j++) {
             if(A[j] < A[k]) {
                 k = j;
             }
         }
         swap(&A[i], &A[k]);
+    }*/
+    for(i = 0; i < n -1; i++) {
+        for(j=i; j < n; j++) {
+            if(A[j] < A[i]) {
+                swap(&A[i], &A[j]);
+            }
+        }
     }
 }
 
@@ -57,11 +64,11 @@ int partition(int A[], int l, int h)
     int i = l, j = h;
     do {
         do {
-            i++;
+            i++; //looking for element > pivot
         }while(A[i] <= pivot);
 
         do {
-            j--;
+            j--; //looking for element < pivot
         }while(A[j] > pivot);
         if( i < j ) swap(&A[i], &A[j]);
     }while(i < j);
@@ -193,16 +200,36 @@ void shell_sort(int A[], int n)
     }
 }
 
+void perm(char s[], int k)
+{
+    static int A[10] = {0};
+    static char res[10];
+    int i;
+    if(s[k] == '\0') {
+        printf("%s\r\n", res);
+    } else { 
+        for(i = 0; s[i] != '\0'; i++) {
+            if(A[i] == 0) {
+                res[i] = s[i];
+                A[i] = 1;
+                perm(s, k+1);
+                A[i] = 0;
+            }
+        }
+    }
+}
+
 int main()
 {
     int A[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2}; //0 is ignore
     //int A[] = {2, 4 , 5, 3};
     int n =10;
-    //merge_iterative(A, 11);
+    merge_iterative(A, n);
     //quicksort(A, 0, 10);
     //merge_recur(A, 0, 9);
     //count_sort(A, 10);
-    shell_sort(A, 10);
+    //shell_sort(A, 10);
+    //selection(A, n);
     for(int i = 0; i < 10; i++)
     {
         printf("%d ", A[i]);

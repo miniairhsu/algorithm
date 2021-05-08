@@ -217,6 +217,63 @@ void Rearrange(struct Array *arr)
         if(i < j) swap(&arr->A[i], &arr->A[j]);
     }
 }
+void cascade(struct Array *arr1, struct Array *arr2)
+{   
+    int i, j;
+    for(i = 0; i < arr2->length; i++) {
+        arr1->A[i+arr1->length] = arr2->A[i];
+    }
+    
+    arr1->length = arr1->length + arr2->length;
+    /*for(i = 0; i < arr1->length; i++) {
+        printf("%d ", arr1->A[i]);
+    }*/
+}
+
+void Merge1(struct Array *arr, int l, int mid, int h) 
+{
+    int i = l, j = mid + 1, k = l;
+    int result[100] = {0};
+    while(i <= mid && j <= h) {
+        if(arr->A[i] < arr->A[j]) {
+            result[k] = arr->A[i];
+            i = i + 1;
+            k = k + 1;
+        } else (arr->A[j] < arr->A[i]){
+            result[k] = arr->A[j];
+            j = j + 1;
+            k = k + 1;
+        } 
+    }
+    for(; i <= mid; i++) {
+        result[k] = arr->A[i];
+        k = k + 1;
+    }
+    for(; j <= h; j++) {
+        result[k] = arr->A[j];
+        k = k + 1;
+    }
+    for(i = l; i <= h; i++) {
+        arr->A[i] = result[i];
+    }
+}
+
+void merge_interative(struct Array* arr) 
+{
+    int p, l, h, mid, i;
+    for(p = 2; p <= arr->length; p = p*2) {
+        for(i = 0; (i + p - 1) <= arr->length; i = i + p) {
+            l = i;
+            h = i + p -1;
+            mid = (l + h)/ 2;
+            //printf("l m h %d %d %d\r\n", l, mid, h);
+            Merge1(arr, l, mid, h);
+            
+        }
+    }
+    if(p / 2 < arr->length)
+        Merge1(arr, 0, (p/2)-1, arr->length);
+}
 
 struct Array* Merge(struct Array *arr1, struct Array *arr2)
 {
@@ -371,6 +428,28 @@ int main()
             case 5:Display(arr1);
         }
     } while(ch<6);*/
-    
+    struct Array* arr1 = (struct Array *)malloc(sizeof(struct Array));
+    arr1->A = (int *)malloc(sizeof(int) * 100);
+    arr1->length = 10;
+    arr1->size = 100;    
+    struct Array* arr2 = (struct Array *)malloc(sizeof(struct Array));
+    arr2->A = (int *)malloc(sizeof(int) * 100);
+    arr2->length = 10;
+    arr2->size = 100;    
+    struct Array* arr3 = (struct Array *)malloc(sizeof(struct Array));
+    arr3->A = (int *)malloc(sizeof(int) * 100);
+    arr3->length = 10;
+    arr3->size = 100;  
+    for(int i = 0; i < arr2->length; i++) {
+        arr2->A[i] = i*2+1;
+        arr1->A[i] = i*2;
+        arr3->A[i] = i + 3;
+    }
+    cascade(arr2, arr1);
+    cascade(arr2, arr3);
+    merge_interative(arr2);
+    for(int i = 0; i < arr2->length; i++) {
+        printf("%d ", arr2->A[i]);
+    }
     return 0;
 }

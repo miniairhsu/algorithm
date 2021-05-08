@@ -47,7 +47,7 @@ void insert(struct Node* p , int index, int x)
             Head = t;
             Head->next = Head;
         } else {
-            while(p->next != Head) p = p->next;
+            while(p->next != Head) p = p->next; //last item
             p->next = t;
             t->next = Head;
             Head = t;

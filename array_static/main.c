@@ -26,5 +26,6 @@ int main()
         printf("%d\r\n", A[i]);
     for(int i = 0; i < 5; i++)
         printf("%d\r\n", p[i]);
+    printf("%f ", e(5, 2));
     return 0;
 }

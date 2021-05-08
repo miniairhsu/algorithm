@@ -135,6 +135,18 @@ int Max(struct Array arr)
     return max;
 }
 
+int max1(int a[], int n)
+{
+    int i;
+    int max = a[0];
+    for(i = 0; i < n; i++) {
+        if(a[i] > max) {
+            max = a[i];
+        }
+    }
+    return max;
+}
+
 int Min(struct Array arr)
 {
     int min = arr.A[0];
@@ -142,6 +154,18 @@ int Min(struct Array arr)
     for(i = 1; i < arr.length; i++) {
         if(arr.A[i] < min)
             min = arr.A[i];
+    }
+    return min;
+}
+
+int min1(int a[], int n)
+{
+    int i;
+    int min = a[0];
+    for(i = 0; i < n; i++) {
+        if(a[i] < min) {
+            min = a[i];
+        }
     }
     return min;
 }
@@ -323,7 +347,7 @@ int main()
 
     //missing multiple elements
     int a1[] = {6,7, 8 , 9, 11, 12, 15, 16, 17, 18, 19};
-     int size1 = 11;
+    int size1 = 11;
     int l1 = a1[0];
     int h1 = a1[size1-1];
     int diff1 = l1 - 0;

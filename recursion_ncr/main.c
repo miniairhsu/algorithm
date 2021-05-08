@@ -8,6 +8,7 @@ int fact(int n)
 
 }
 
+//n!/(r! * (n-r)!)
 int nCr(int n, int r)
 {
     int num, den;
