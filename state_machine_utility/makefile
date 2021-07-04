@@ -7,7 +7,8 @@ libs=-L.
 ldflags=-lm -lrt -pthread
 deps := $(wildcard *.h) 
 src := main.c \
-       queue_util.c  
+       st_util.c \
+	   queue_util.c  
 	
 objs = $(src:.c=.o)
 AP:$(objs)
