@@ -1,0 +1,42 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/len/algorithm/state_machine_utility/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/local/DS-5_v5.23.1/bin/make cmTC_abb43/fast && /usr/local/DS-5_v5.23.1/bin/make -f CMakeFiles/cmTC_abb43.dir/build.make CMakeFiles/cmTC_abb43.dir/build
+make[1]: Entering directory '/home/len/algorithm/state_machine_utility/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_abb43.dir/src.c.o
+/usr/bin/gcc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_abb43.dir/src.c.o   -c /home/len/algorithm/state_machine_utility/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_abb43
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_abb43.dir/link.txt --verbose=1
+/usr/bin/gcc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_abb43.dir/src.c.o  -o cmTC_abb43 
+/usr/bin/ld: CMakeFiles/cmTC_abb43.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_abb43.dir/build.make:86: recipe for target 'cmTC_abb43' failed
+make[1]: *** [cmTC_abb43] Error 1
+make[1]: Leaving directory '/home/len/algorithm/state_machine_utility/build/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_abb43/fast' failed
+make: *** [cmTC_abb43/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

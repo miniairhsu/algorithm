@@ -8,7 +8,7 @@
 #define QUEUE_ID 65
 #define QUEUE_NUM 4
 #define GETQUEUE_ID(queue_id) (queue_id - 1 + QUEUE_ID)
-#define QUEUE1 "queue1"
+#define QUEUE1 "main.exe"
 #define QUEUE2 "queue2"
 #define QUEUE3 "queue3"
 #define QUEUE4 "queue4"

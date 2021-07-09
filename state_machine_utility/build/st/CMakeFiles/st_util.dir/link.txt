@@ -1,0 +1,2 @@
+/usr/bin/ar qc libst_util.a  CMakeFiles/st_util.dir/st_util.c.o
+/usr/bin/ranlib libst_util.a

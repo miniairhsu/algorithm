@@ -1,0 +1,5 @@
+set(HEADER_FILES ../queue/queue_util.h)
+add_library(st_util st_util.c ${HEADER_FILES})
+target_include_directories(st_util PUBLIC ../queue)
+target_link_directories(st_util PRIVATE ../queue)
+target_link_libraries(st_util queue_util)

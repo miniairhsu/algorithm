@@ -1,0 +1,1 @@
+/usr/bin/gcc    CMakeFiles/STATE_MACHINE.dir/main.c.o  -o STATE_MACHINE   -L/home/len/algorithm/state_machine_utility/queue  -L/home/len/algorithm/state_machine_utility/st  -Wl,-rpath,/home/len/algorithm/state_machine_utility/queue:/home/len/algorithm/state_machine_utility/st queue/libqueue_util.a st/libst_util.a -pthread queue/libqueue_util.a 

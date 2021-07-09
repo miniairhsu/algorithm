@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/len/algorithm/state_machine_utility/queue/queue_util.c
+queue_util.h
+/home/len/algorithm/state_machine_utility/queue/queue_util.h
+
+/home/len/algorithm/state_machine_utility/queue/queue_util.h
+stdio.h
+-
+sys/ipc.h
+-
+sys/msg.h
+-
+string.h
+-
+

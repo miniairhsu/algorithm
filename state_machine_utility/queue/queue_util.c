@@ -40,9 +40,9 @@ void enqueue_task(struct task_runner *task_r, void (*fn)(void*, void*), void* ar
     task_r->queue_i.arg1 = arg1;
     task_r->queue_i.arg2 = arg2;
     task_r->queue_i.info = 4;
-    //printf("Queue %d: \r\n", task_r->msg_id);
-    if(msgsnd(task_r->msg_id, &task_r->queue_i, sizeof(task_r->queue_i), 0) != 0)
-        printf("enqueue fail\r\n"); 
+    int ret;
+    if((ret = msgsnd(task_r->msg_id, &task_r->queue_i, sizeof(task_r->queue_i), 0)) != 0)
+        printf("enqueue fail %d %d\r\n", ret, task_r->msg_id); 
 }
 
 void dequeue_task(struct task_runner* task_r)
