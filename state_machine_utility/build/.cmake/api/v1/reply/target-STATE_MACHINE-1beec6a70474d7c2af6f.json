@@ -33,29 +33,53 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 11,
+				"line" : 15,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 20,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
 				"line" : 12,
 				"parent" : 0
 			},
 			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 14,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 15,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
+				"command" : 3,
 				"file" : 0,
 				"line" : 13,
 				"parent" : 0
@@ -63,13 +87,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 9,
-				"parent" : 0
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 10,
+				"line" : 14,
 				"parent" : 0
 			}
 		]
@@ -83,22 +101,30 @@
 					"fragment" : " "
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 7,
 					"fragment" : "-pthread"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 7,
+					"backtrace" : 8,
+					"path" : "/home/len/algorithm/state_machine_utility/build"
+				},
+				{
+					"backtrace" : 9,
 					"path" : "/home/len/algorithm/state_machine_utility/queue"
 				},
 				{
-					"backtrace" : 8,
+					"backtrace" : 10,
 					"path" : "/home/len/algorithm/state_machine_utility/st"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 11,
+					"path" : "/home/swlib/gsl/include"
+				},
+				{
+					"backtrace" : 6,
 					"path" : "/home/len/algorithm/state_machine_utility/st/../queue"
 				}
 			],
@@ -112,11 +138,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 5,
+			"backtrace" : 6,
 			"id" : "st_util::@4d2daceb860804c9bc79"
 		},
 		{
-			"backtrace" : 4,
+			"backtrace" : 5,
 			"id" : "queue_util::@d63f5f69c5a9088733ed"
 		}
 	],
@@ -140,17 +166,30 @@
 				"role" : "libraryPath"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/home/len/algorithm/state_machine_utility/queue:/home/len/algorithm/state_machine_utility/st",
-				"role" : "libraries"
+				"backtrace" : 4,
+				"fragment" : "-L/home/swlib/gsl/lib",
+				"role" : "libraryPath"
 			},
 			{
-				"backtrace" : 4,
-				"fragment" : "queue/libqueue_util.a",
+				"fragment" : "-Wl,-rpath,/home/len/algorithm/state_machine_utility/queue:/home/len/algorithm/state_machine_utility/st:/home/swlib/gsl/lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 5,
+				"fragment" : "queue/libqueue_util.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
 				"fragment" : "st/libst_util.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgsl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgslcblas",
 				"role" : "libraries"
 			},
 			{
@@ -158,7 +197,7 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 5,
 				"fragment" : "queue/libqueue_util.a",
 				"role" : "libraries"
 			}

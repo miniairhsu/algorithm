@@ -2,13 +2,13 @@ ARCH=arm
 COMPILER=arm-linux-gnueabihf-
 
 
-incs=-I.	
-libs=-L.
-ldflags=-lm -lrt -pthread
+incs=-I. -I./queue -I./st	
+libs=-L. -L./queue -L./st
+ldflags=-lgsl -lgslcblas -lm -lpthread
 deps := $(wildcard *.h) 
 src := main.c \
-       st_util.c \
-	   queue_util.c  
+       ./st/st_util.c \
+	   ./queue/queue_util.c  
 	
 objs = $(src:.c=.o)
 AP:$(objs)

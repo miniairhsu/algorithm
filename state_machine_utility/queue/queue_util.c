@@ -47,9 +47,8 @@ void enqueue_task(struct task_runner *task_r, void (*fn)(void*, void*), void* ar
 
 void dequeue_task(struct task_runner* task_r)
 {
-    //printf("start dequeue task\r\n");
-    msgrcv(task_r->msg_id, &task_r->queue_i, sizeof(task_r->queue_i), 0, 0);
-    task_r->queue_i.fn(task_r->queue_i.arg1, task_r->queue_i.arg2);
+        msgrcv(task_r->msg_id, &task_r->queue_i, sizeof(task_r->queue_i), 0, 0);
+        task_r->queue_i.fn(task_r->queue_i.arg1, task_r->queue_i.arg2);
 }
 
 void kill_queue(struct task_runner *task_r) 

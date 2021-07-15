@@ -10,9 +10,9 @@ void init_st(struct sm_state* sm, void (*func)(void*, void*))
     sm->events->next_event = NULL;
 }
 
-void dequeue_st_func(struct st_container* st_c) 
+void dequeue_st_func(struct task_runner* sm_task) 
 {
-    dequeue_task(&st_c->sm_task);
+    dequeue_task(sm_task);
 }
 
 struct event_list* match_state_event(struct sm_state* sm, sm_event event)
@@ -53,8 +53,14 @@ void register_state_event(struct sm_state* sm, sm_event event, void (*handler) (
     return;
 }
 
-void init_sc(struct st_container* st_c) 
+void init_sc(struct st_container* st_c, char* name, int id, int max_st, struct task_runner* sm_task) 
 {
+    //*st_c = CREATE_STATE_CONTAINER(name, id, max_st, sm_task);
+    sm_task = (struct task_runner*)calloc(1, sizeof(struct task_runner));
+    st_c->name = name;
+    st_c->sm_id = id;
+    st_c->max_st = max_st;
+    st_c->sm_task = sm_task;
     if(st_c == NULL) {
         st_c = (struct st_container *)malloc(sizeof(struct st_container));
     }
@@ -79,7 +85,7 @@ void register_state_container(struct st_container* st_c, struct sm_state* sm)
 void init_sm(struct st_container* st_c, struct sm_state* init_state, int queue_id)
 {
     st_c->curr_state = init_state;
-    register_queue(queue_id, &st_c->sm_task);
+    register_queue(queue_id, st_c->sm_task);
 }
 
 void post_event(struct st_container* st_c, sm_event event)
@@ -111,14 +117,16 @@ struct sm_state* match_state(struct st_container* st_c, int st_id)
 void run_sm(struct st_container* st_c, void* arg1, void* arg2)
 {
     printf("current_state id %d\r\n", st_c->curr_state->st_id);
+    int q_size = 0;
     struct event_list* current_list = match_state_event(st_c->curr_state, st_c->curr_state->current_event);
     current_list->handler(arg1, arg2);
     //enque state machine specific function 
-    enqueue_task(&st_c->sm_task, st_c->curr_state->func, arg1, arg2);
+    enqueue_task(st_c->sm_task, st_c->curr_state->func, arg1, arg2);
 
     //state transition
     st_c->curr_state = match_state(st_c, *(int *)arg1); //arg1 is returned next state id
-    printf("next_state id %d\r\n", st_c->curr_state->st_id);
+    q_size = check_queue(st_c->sm_task);
+    printf("next_state id %d %d\r\n", st_c->curr_state->st_id, q_size);
 }
 
    

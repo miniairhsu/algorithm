@@ -35,7 +35,7 @@ struct st_container
     char* name;
     int sm_id;
     int max_st;
-    struct task_runner sm_task;
+    struct task_runner* sm_task;
     struct sm_state** sm_sts;
     struct sm_state* curr_state;
 };
@@ -59,14 +59,14 @@ struct sm_controller
                 .sm_task=_sm_task \
             }
 void init_st(struct sm_state* sm, void (*func)(void*, void*));
-void dequeue_st_func(struct st_container* st_c);
+void dequeue_st_func(struct task_runner* sm_task);
 void register_state_event(struct sm_state* sm, sm_event event, void (*handler) (void*, void*));
 struct event_list* match_state_event(struct sm_state* sm, sm_event event);
 void register_state_container(struct st_container* st_c, struct sm_state* sm);
 struct sm_state* match_state(struct st_container* st_c, int st_id);
 void init_sm(struct st_container* st_c, struct sm_state* init_state, int queue_id);
 void post_event(struct st_container* st_c, sm_event event);
-void init_sc(struct st_container* st_c);
+void init_sc(struct st_container* st_c, char* name, int id, int max_st, struct task_runner* sm_task);
 void run_sm(struct st_container* st_c, void* arg1, void* arg2);
 void sm_task_execute(struct st_container* st_c);
 

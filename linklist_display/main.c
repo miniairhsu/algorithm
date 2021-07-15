@@ -258,7 +258,7 @@ void reverse_array(struct Node* p)
     struct Node* q = p;
     a = (int *)malloc(sizeof(int) * count(p));
     while(q != NULL) {
-         [i] = q->data;
+        a[i] = q->data;
         q = q->next;
         i++;
     }

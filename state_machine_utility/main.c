@@ -12,13 +12,16 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <mqueue.h>
-#include<pthread.h>
-#include<stdlib.h>
-#include<unistd.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <gsl/gsl_math.h>
+#include <gsl/gsl_vector.h>
+//#include <version.h>
 #include "st_util.h"
 pthread_t tid[2];
-struct task_runner sm_task;
 struct st_container st_container1;
+struct task_runner sm_task;
 void adder(void* a, void* b)
 {
     *(int *)a = 2;
@@ -47,7 +50,9 @@ void* cmd_scan(void* arg)
     int a, b, c;
     while (1) {
         //printf("Enter the first value:");
-        //dequeue_st_func((struct st_container *)arg);
+        a = check_queue(st_container1.sm_task);
+        printf("%s size = %d\r\n", __func__, a);
+        dequeue_st_func(st_container1.sm_task);
     }
 }
 
@@ -73,8 +78,8 @@ int main (int argc, char **argv)
     register_state_event(&second_state, 1, suber);
     register_state_event(&second_state, 2, suber);
     register_state_event(&second_state, 3, suber);
-    struct st_container st_container1 = CREATE_STATE_CONTAINER("STATE1", 1, 5, sm_task);
-    init_sc(&st_container1);
+    //struct st_container st_container1 = CREATE_STATE_CONTAINER("STATE1", 1, 5, sm_task);
+    init_sc(&st_container1, "STATE1", 1, 5, &sm_task);
     register_state_container(&st_container1, &start_state);
     register_state_container(&st_container1, &second_state);
     init_sm(&st_container1, &start_state, 1);
@@ -82,9 +87,10 @@ int main (int argc, char **argv)
     run_sm(&st_container1, (void *)&a, (void *)&b);
     run_sm(&st_container1, (void *)&a, (void *)&b);
     run_sm(&st_container1, (void *)&a, (void *)&b);
-    dequeue_st_func(&st_container1);
-    dequeue_st_func(&st_container1);
-    dequeue_st_func(&st_container1);     
+    //printf("version number %d.%d\r\n", STATE_MACHINE_VERSION_MAJOR, STATE_MACHINE_VERSION_MINOR);
+    //dequeue_st_func(&st_container1);
+    //dequeue_st_func(&st_container1);
+    //dequeue_st_func(&st_container1);     
     err = pthread_create(&(tid[0]), NULL, &cmd_scan, NULL);
 
     if (err != 0)

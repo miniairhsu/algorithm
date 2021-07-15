@@ -6,5 +6,5 @@ C_FLAGS =   -pthread
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/len/algorithm/state_machine_utility/queue -I/home/len/algorithm/state_machine_utility/st -I/home/len/algorithm/state_machine_utility/st/../queue 
+C_INCLUDES = -I/home/len/algorithm/state_machine_utility/build -I/home/len/algorithm/state_machine_utility/queue -I/home/len/algorithm/state_machine_utility/st -I/home/swlib/gsl/include -I/home/len/algorithm/state_machine_utility/st/../queue 
 
